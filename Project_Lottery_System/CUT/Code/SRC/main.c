@@ -6,7 +6,7 @@
    	REVISION HISTORY
 	DATE            NAME              REASON
 	------------------------------------------------------------------
-    04/10/2022      Username          This is done for creationof menu
+    04/10/2022      Username          This is done for creation of menu
 
  * ********************************************************************************/
 
@@ -16,7 +16,7 @@
 #include <ctype.h>                  //Includes functions of ctype
 #include "functions.h"              //Header file
 #include "participant_corner.c"     //Including participant_corner.c file
-#include "ZDA_authority.c"	        //Including ZDA_authority.c file
+#include "ZDA_authority.c"	    //Including ZDA_authority.c file
 #include "file_handling.c"          //Including file_handling.c file
 #define MAXPW 32                    //Define Macro
 int main()
