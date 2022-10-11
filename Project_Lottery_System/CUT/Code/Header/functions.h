@@ -1,5 +1,5 @@
 /********************************************************************************************
-**     FILENAME      :         functions.h
+**     FILENAME      :      functions.h
 **
 **    DESCRIPTION    :      This File contains structure definitions and all funcions prototypes.
 
@@ -18,8 +18,8 @@ typedef struct queue
         int token;
         struct queue *next;
 }q1;
+q1 *front,*rear,*new_queue,*ptr_queue;  //Pointers to tokens queue
 
-q1 *front,*rear,*new_queue,*ptr_queue;
 typedef struct participant  //Structure of participant
 {
         int family_id;
@@ -44,22 +44,22 @@ pt *new,*prev,*start,*ptr;     //Pointers to plot type structure
 
 int Participant_Corner();       //To display participant menu
 int ZDA_Authority();            //To display ZDA Authority menu
-int initialize_tokens();         //To initialize tokens in a queue
+int initialize_tokens();        //To initialize tokens in a queue
 int Generate_Winning_Lottery(); //To generate winning Lottery
 int Get_Winning_Lottery(); //To get the winning family id
 void enque(int);                //To insert into queue
 int deque();                    //to delete from queue
 int grab_token();               //To grab a lottery token
 int cancel_token();             //To cancel a lottery token
-int Lottery_Confirmation();   //To participate in lottery
+int Lottery_Confirmation();     //To participate in lottery
 int view_allotment_details();   //To view allotment details
-void add_plot();                        //To add plot
+void add_plot();                //To add plot
 int edit_plot();                //To edit plot
 int delete_plot();              //To delete plot
 int view_plot_details();        //To view plot details
 void add_participant();         //To add participant
 int edit_participant();         //To edit participant details
-void remove_participant();       //To remove participant details
+void remove_participant();      //To remove participant details
 int view_participant_details(); //To view participant details
 int view_lottery_report();      //To view lottery report
 int list_to_plot_file();        //List to plot file
