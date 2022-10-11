@@ -1,16 +1,23 @@
+/********************************************************************************************
+**     FILENAME      :      func.h
+**
+**    DESCRIPTION    :      This file contains functions used for unit testing.
+*****************************************************************************************/
 #include "functions.h"
+#define SUCCESS 1
+#define FAILURE 0
 int add_participant_to_list(int familyid,char str[])
 {
     new1=(p *)calloc(1,sizeof(p));
     if(new1==NULL)
     {
-                printf("\nMemory cannot be allocated\n\n");
-                return 0;
+        printf("\nMemory cannot be allocated\n\n");
+        return FAILURE;
     }
     if(familyid<1000 || familyid>1200)
     {
         printf("Invalid Family ID should be between 1000-1200\n");
-        return 0;
+        return FAILURE;
     }
     if(start1)
     {
@@ -18,14 +25,14 @@ int add_participant_to_list(int familyid,char str[])
         if((ptr1) && ptr1->family_id==familyid)
         {
             printf("Duplicate Family Id\n");
-            return 0;
+            return FAILURE;
         }
     }
     int len=strlen(str);
     if(len<5||len>40)
     {
         printf("Invalid length should be between 5 to 40 characters\n");
-        return 0;
+        return FAILURE;
     }
     int i=0;
     for( i=0;i<len;i++)
@@ -33,17 +40,17 @@ int add_participant_to_list(int familyid,char str[])
         if(!isalpha(*(str+i)) && !isspace(*(str+i)))
         {
             printf("Name should be of proper convention\n");
-            return 0;
+            return FAILURE;
         }
     }
     new1->family_id=familyid;
     strcpy(new1->name,str);
     new1->token_no=0;
-        new1->remaining_amount=0;
-        new1->size=0;
+    new1->remaining_amount=0;
+    new1->size=0;
     new1->plot_no=0;
     strcpy(new1->participated_in_lottery,"NO");
-    if(start1==NULL) //Inserting record inside the list
+    if(start1==NULL)            //Inserting record inside the list
     {
         start1=new1;
         new1->next=NULL;
@@ -59,7 +66,7 @@ int add_participant_to_list(int familyid,char str[])
         prev1->next=new1;
         new1->next=ptr1;
     }
-    return 1;
+    return SUCCESS;
 }
 
 int remove_participant_from_list(int code)
@@ -67,14 +74,14 @@ int remove_participant_from_list(int code)
     if(!start1)
     {
         printf("\nNo Participant has been added by ZDA Authority\n\n");
-        return 0;
+        return FAILURE;
     }
     if(code==start1->family_id)
     {
         ptr1=start1;
         start1=start1->next;
         free(ptr1);
-        return 1;
+        return SUCCESS;
     }
     else
     {
@@ -82,12 +89,12 @@ int remove_participant_from_list(int code)
         if(ptr1==NULL)
         {
             printf("\nParticipant not found\n\n");
-            return 0;
+            return FAILURE;
         }
         prev1->next=ptr1->next;
         free(ptr1);
     }
-    return 1;
+    return SUCCESS;
 }
 
 int add_plot_to_list(int pno, int psize, double pprice)
@@ -96,12 +103,12 @@ int add_plot_to_list(int pno, int psize, double pprice)
     if(new==NULL)
     {
         printf("\nMemory cannot be allocated");
-        return 0;
+        return FAILURE;
     }
     if(pno<1 || pno>100)
     {
         printf("\nInvalid Plot number should be in range of 1-100");
-        return 0;
+        return FAILURE;
     }
     if(start)
     {
@@ -109,18 +116,18 @@ int add_plot_to_list(int pno, int psize, double pprice)
         if((ptr) && ptr->plot_no==pno)
         {
             printf("\nDuplicate plot number");
-            return 0;
+            return FAILURE;
         }
     }
     if(psize<100 || psize>10000)
     {
         printf("\nInvalid Plot size,should be in range 100-10000");
-        return 0;
+        return FAILURE;
     }
     if(pprice<50000.00)
     {
         printf("\nInvalid Plot price, price cannot be less then 50000");
-        return 0;
+        return FAILURE;
     }
     new->plot_no=pno;
     new->size=psize;
@@ -142,5 +149,5 @@ int add_plot_to_list(int pno, int psize, double pprice)
         prev->next=new;
         new->next=ptr;
     }
-    return 1;
+    return SUCCESS;
 }
