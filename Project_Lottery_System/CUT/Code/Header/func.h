@@ -3,6 +3,8 @@
 **
 **    DESCRIPTION    :      This file contains functions used for unit testing.
 *****************************************************************************************/
+#ifndef FUNC_H
+#define FUNC_H
 #define SUCCESS 1
 #define FAILURE 0
 int add_participant_to_list(int familyid,char str[])
@@ -150,3 +152,4 @@ int add_plot_to_list(int pno, int psize, double pprice)
     }
     return SUCCESS;
 }
+#endif
