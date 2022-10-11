@@ -3,7 +3,6 @@
 **
 **    DESCRIPTION    :      This file contains functions used for unit testing.
 *****************************************************************************************/
-#include "functions.h"
 #define SUCCESS 1
 #define FAILURE 0
 int add_participant_to_list(int familyid,char str[])
