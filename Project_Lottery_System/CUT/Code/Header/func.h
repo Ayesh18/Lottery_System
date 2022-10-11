@@ -1,10 +1,3 @@
-#include <stdio.h>   //It includes all the header files
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
-#include <termios.h>
-#include <sys/types.h>
-#include <unistd.h>
 #include "functions.h"
 int add_participant_to_list(int familyid,char str[])
 {
