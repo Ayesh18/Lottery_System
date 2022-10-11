@@ -1,5 +1,4 @@
 /**********************************************************************************
- *
 
 	FILENAME: main.c
 	DESCRIPTION:This file is used to display the main menu to the user.
@@ -7,6 +6,7 @@
 	DATE            NAME              REASON
 	------------------------------------------------------------------
     04/10/2022      Username          This is done for creation of menu
+ 
 
  * ********************************************************************************/
 
@@ -37,7 +37,7 @@ int main()
 		printf("\n-----------------------------\n");
 		printf("\n1.Participant Corner\n2.ZDA Authority\n3.Exit");
 
-		printf("\nEnter choice: "); //Taking users choice
+		printf("\nEnter choice: "); 			//Taking users choice
 		scanf("%d",&choice);
 		switch(choice)
 		{
@@ -49,15 +49,14 @@ int main()
 				nchr = getpasswd (&pass, MAXPW,0 , fp);
 				if((strcmp(pass,"zx"))==0)
 				{
-					system("clear");          //clears the screen
+					//system("clear");       //clears the screen
 					ZDA_Authority();         //Function call for ZDA_Authority
 				}
 				else
 				{
 					printf("You have entered incorrect password");
 				}
-				system("clear");
-
+				//system("clear");
 				choice=0;
 				break;
 			case 3 : break;
@@ -65,9 +64,9 @@ int main()
 		}
 	}
 	if(start)                              //When start is not NULL
-		list_to_plot_file();               //Linked list to plot file
+		list_to_plot_file();           //Linked list to plot file
 	if(start1)                             //When start1 is not NULL
-		list_to_participant_file();        //Linked list to participant file
+		list_to_participant_file();    //Linked list to participant file
 	return EXIT_SUCCESS;
 }
 
