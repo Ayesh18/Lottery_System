@@ -13,7 +13,7 @@ int lottery_no=0;
 int p_no=0;
 int date=0;
 #include <stddef.h>
-typedef struct queue
+typedef struct queue                    //Token queue is implemented using linked list
 {
         int token;
         struct queue *next;
