@@ -1,13 +1,15 @@
 SRC = ../SRC
 INC = -I../Header
 BIN = ../bin
-DATA= ../data
-CFLAGS = -pg
+DATA = ../data
+CFLAGS = -pg -fprofile-arcs -ftest-coverage
 LINK = -lpthread
 OBJ_CL = *.o
 G = gcc
-V= valgrind
-S= splint
+GP = gprof
+GC = gcov
+V = valgrind
+S = splint
 M = main.o
 MAIN = main.c
 T = test
@@ -15,17 +17,29 @@ test: $(M)
         $(G) $(CFLAGS) $(BIN)/$(M) $(INC) -o $(BIN)/test $(LINK)
 $(M):
         $(G) -c $(CFLAGS) $(SRC)/$(MAIN) $(INC) -o $(BIN)/$(M) $(LINK)
+
 valgrind:
         $(V) $(BIN)/./test
+
 splint:
         $(S) $(INC) $(SRC)/$(MAIN)
+
+gprof:
+        $(GP) -b ./$(BIN)/test gmon.out
+
 gcov:
-        $(G) -fprofile-arcs -ftest-coverage $(INC) $(SRC)/$(MAIN) -o $(BIN)/test $(LINK)
-        ./$(BIN)/test
+        $(GC) $(BIN)/main
+
+gcovshow:
+        cat main.c.gcov
+
 run:
         ./$(BIN)/test
+
 clean:
         rm $(BIN)/$(M) $(BIN)/$(T)
         rm $(DATA)/Participant $(DATA)/Plot
-clean_gcov:
-        rm *.gcov *.gcda *.gcno
+
+cleanall:
+        rm *.gcov $(BIN)/*.gcda $(BIN)/*.gcno *.out
+
